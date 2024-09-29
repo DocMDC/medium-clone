@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    domains: ['robust-gerbil-129.convex.cloud']
+  }
+}
 
-export default nextConfig;
+export default nextConfig
