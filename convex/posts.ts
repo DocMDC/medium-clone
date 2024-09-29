@@ -9,7 +9,7 @@ export const generateUploadUrl = mutation(async ctx => {
 export const getPosts = query({
   args: {},
   handler: async ctx => {
-    const posts = await ctx.db.query('posts').order('asc').collect()
+    const posts = await ctx.db.query('posts').order('desc').collect()
     return Promise.all(
       posts.map(async post => {
         const author = await ctx.db.get(post.authorId)
@@ -32,7 +32,7 @@ export const getPosts = query({
 export const getRecentPosts = query({
   args: {},
   handler: async ctx => {
-    const posts = await ctx.db.query('posts').order('asc').collect()
+    const posts = await ctx.db.query('posts').order('desc').collect()
     return Promise.all(
       posts.map(async post => {
         const author = await ctx.db.get(post.authorId)

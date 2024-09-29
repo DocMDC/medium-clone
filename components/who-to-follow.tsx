@@ -34,7 +34,7 @@ export default function WhoToFollow() {
       <CardContent>
         {!users && <Spinner />}
 
-        <ul>
+        <ul className='flex flex-col gap-3'>
           {users?.map(user => (
             <li key={user._id} className='flex items-center justify-between'>
               <div className='inline-flex items-center gap-2'>

@@ -31,11 +31,14 @@ export default function RecentPosts() {
       <CardContent>
         {!posts && <Spinner />}
 
-        <ul>
+        <ul className='flex flex-col'>
           {posts?.map(post => (
             <li key={post._id}>
-              <Link href={`/posts/${post.slug}`} className='block'>
-                <div className='inline-flex items-center gap-2'>
+              <Link
+                href={`/posts/${post.slug}`}
+                className='block px-4 py-2 hover:bg-muted'
+              >
+                <div className='inline-flex items-end gap-2'>
                   <Avatar className='size-5'>
                     <AvatarImage
                       src={post.author?.imageUrl}
@@ -46,7 +49,7 @@ export default function RecentPosts() {
                     </AvatarFallback>
                   </Avatar>
 
-                  <h2 className='text-xs font-medium'>
+                  <h2 className='text-xs leading-3 text-muted-foreground'>
                     {combineName(post.author)}
                   </h2>
                 </div>
