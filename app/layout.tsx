@@ -28,8 +28,8 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Next Shadcn Template',
-  description: 'NextJs template with shadcn/ui'
+  title: 'Bridge',
+  description: 'NextJs Convex Project'
 }
 
 export default function RootLayout({
