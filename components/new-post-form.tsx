@@ -18,6 +18,7 @@ import Editor from '@/components/editor/editor'
 import ImageUploader from '@/components/image-uploader'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { useRouter } from 'next/navigation'
+import { Id } from '@/convex/_generated/dataModel'
 
 type Inputs = z.infer<typeof newPostSchema>
 
@@ -72,6 +73,7 @@ export default function NewPostForm() {
     try {
       const postSlug = await createPost({
         ...data,
+        coverImageId: data.coverImageId as Id<'_storage'> | undefined,
         content: JSON.stringify(contentJson)
       })
 
