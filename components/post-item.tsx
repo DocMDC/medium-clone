@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-import { Id } from '@/convex/_generated/dataModel'
+import { Post } from '@/lib/types'
 import { combineName, formatDate } from '@/lib/utils'
 
 import { Separator } from '@/components/ui/separator'
@@ -9,32 +9,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 import { MessageSquare, Sparkle, ThumbsUp } from 'lucide-react'
 
-interface PostItemProps {
-  post: {
-    _id: Id<'posts'>
-    _creationTime: number
-    coverImageId?: string
-    coverImageUrl?: string | null
-    title: string
-    slug: string
-    excerpt: string
-    content: string
-    authorId: Id<'users'>
-    likes: number
-    author: {
-      _id: Id<'users'>
-      _creationTime: number
-      firstName?: string | undefined
-      lastName?: string | undefined
-      imageUrl?: string | undefined
-      posts?: Id<'posts'>[] | undefined
-      email: string
-      clerkUserId: string
-    } | null
-  }
-}
-
-export default function PostItem({ post }: PostItemProps) {
+export default function PostItem({ post }: { post: Post }) {
   return (
     <li className='mb-4 pb-7 sm:border-b'>
       <Link href={`/posts/${post.slug}`} className='block'>

@@ -1,9 +1,10 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useDebouncedCallback } from 'use-debounce'
+// import { useDebouncedCallback } from 'use-debounce'
 
 import { cn } from '@/lib/utils'
+import { Post } from '@/lib/types'
 
 import {
   EditorCommand,
@@ -33,7 +34,6 @@ import { MathSelector } from '@/components/editor/selectors/math-selector'
 import { ColorSelector } from '@/components/editor/selectors/color-selector'
 
 import { Separator } from '@/components/ui/separator'
-import { Post } from '@prisma/client'
 
 const hljs = require('highlight.js')
 
