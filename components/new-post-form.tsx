@@ -4,21 +4,23 @@ import { z } from 'zod'
 import { toast } from 'sonner'
 import { JSONContent } from 'novel'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
 import { newPostSchema } from '@/lib/schemas'
 import { createSlugFromName } from '@/lib/utils'
+
 import { useMutation } from 'convex/react'
 import { api } from '@/convex/_generated/api'
+import { Id } from '@/convex/_generated/dataModel'
 
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import Editor from '@/components/editor/editor'
+import { Spinner } from '@/components/ui/spinner'
 import ImageUploader from '@/components/image-uploader'
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
-import { useRouter } from 'next/navigation'
-import { Id } from '@/convex/_generated/dataModel'
 
 type Inputs = z.infer<typeof newPostSchema>
 
@@ -86,7 +88,7 @@ export default function NewPostForm() {
     }
   }
   return (
-    <form onSubmit={handleSubmit(processForm)} className='mt-6 max-w-2xl'>
+    <form onSubmit={handleSubmit(processForm)}>
       <div className='flex flex-col gap-4'>
         {/* Cover image */}
         <div className='flex justify-between gap-4'>
@@ -115,7 +117,7 @@ export default function NewPostForm() {
         </div>
 
         {/* Title and slug */}
-        <div className='flex justify-between gap-4'>
+        <div className='flex flex-col justify-between gap-4 sm:flex-row'>
           <div className='flex-1'>
             <Input
               type='text'
@@ -158,8 +160,19 @@ export default function NewPostForm() {
         </div>
 
         <div>
-          <Button type='submit' disabled={isSubmitting}>
-            {isSubmitting ? 'Creating...' : 'Create post'}
+          <Button
+            type='submit'
+            disabled={isSubmitting}
+            className='w-full sm:w-1/2'
+          >
+            {isSubmitting ? (
+              <>
+                <Spinner className='mr-2' />
+                <span>Creating post...</span>
+              </>
+            ) : (
+              'Create post'
+            )}
           </Button>
         </div>
       </div>

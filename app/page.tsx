@@ -12,7 +12,7 @@ export default function Home() {
             <Posts />
           </main>
 
-          <aside className='flex w-full flex-col justify-between gap-6 md:flex-row xl:sticky xl:top-[65px] xl:w-[350px] xl:flex-col xl:py-20'>
+          <aside className='flex w-full flex-col justify-between gap-6 pb-10 md:flex-row xl:sticky xl:top-[65px] xl:w-[350px] xl:flex-col xl:py-20'>
             <RecentPosts />
             <RecommendedTopics />
             <WhoToFollow />
