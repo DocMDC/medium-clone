@@ -11,7 +11,7 @@ import { MessageSquare, Sparkle, ThumbsUp } from 'lucide-react'
 
 export default function PostItem({ post }: { post: Post }) {
   return (
-    <li className='mb-4 pb-7 sm:border-b'>
+    <li className='mb-4 pb-10 pt-5 sm:border-b'>
       <Link href={`/posts/${post.slug}`} className='block'>
         {/* Author */}
         <div className='inline-flex items-center gap-3'>
@@ -27,7 +27,7 @@ export default function PostItem({ post }: { post: Post }) {
           </div>
         </div>
 
-        <div className='mt-2 flex flex-col-reverse gap-x-10 sm:mt-4 sm:flex-row'>
+        <div className='mt-2 flex flex-col-reverse gap-x-10 sm:mt-4 sm:flex-row sm:items-center'>
           {/* Post details */}
           <div className='mt-4 w-full sm:mt-0 sm:w-3/4'>
             <div className='space-y-1'>
