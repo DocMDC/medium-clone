@@ -32,7 +32,7 @@ export const getPosts = query({
 export const getRecentPosts = query({
   args: {},
   handler: async ctx => {
-    const posts = await ctx.db.query('posts').order('desc').collect()
+    const posts = await ctx.db.query('posts').order('desc').take(4)
     return Promise.all(
       posts.map(async post => {
         const author = await ctx.db.get(post.authorId)
